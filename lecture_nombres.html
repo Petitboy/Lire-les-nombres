@@ -2,63 +2,200 @@
 
 <html>
     <head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-1MZ2TWL3WN"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'G-1MZ2TWL3WN');
+		</script>
+		
         <meta charset="utf-8">
         <link href="lecture_nombres.css" rel="stylesheet" type="text/css">
         <title>Lire les nombres</title>
     </head>
 
-<body>
+<body id="back">
 	<header class="titre">
-		<div>
+		<div>			
+			
 			<h2><a href="lire_les_nombres.ods" target="_blank" class="w3-button">Lire les nombres</a></h2>
-			<button onclick="All()">Tout</button>
-			<button onclick="reset()">Rien</button>
+			
+			<div style="display: flex; justify-content: center;">
+				
+			<form>			
+				<label>Couleurs</label>
+				<select name="couleurs" id="couleurs">
+					<option value="noir_blanc" selected="selected">noir/blanc</option>
+					<option value="blanc_noir">blanc/noir</option>
+					<option value="jaune_noir">jaune/noir</option>
+					<option value="violet_blanc">violet/blanc</option>
+					<option value="black_cyan">black/cyan</option>
+					<option value="black_yellow">black/yellow</option>
+					<option value="white_blue">white/blue</option>
+					<option value="black_thalo_yellow_green">black/thalo yellow green</option>
+					<option value="lime_black">lime/black</option>
+				</select>
+			</form>
+				
+				<form>
+					<select name="progression CP" id="progressionCP">
+						<option value="progCP">Progression CP</option>
+						<option value="unites">N°1 - 0 à 9</option>
+						<option value="dixtreize">N°2 - 10 à 13</option>						
+						<option value="quatorzeseize">N°3 - 14 à 16</option>
+						<option value="dixseize">N°4 - 10 à 16</option>
+						<option value="dix">N°5 - 10 à 19</option>
+						<option value="vingt">N°6 - 20 à 29</option>
+						<option value="trente">N°7 - 30 à 39</option>
+						<option value="0123">N°8 - 4 chiffres 0 1 2 3</option>
+						<option value="quarante">N°9 - 40 à 49</option>
+						<option value="cinquante">N°10 - 50 à 59</option>
+						<option value="012345u">N°11 - 6 chiffres 0 1 2 3 4 5</option>
+						<option value="soixante">N°12 - 60 à 69</option>
+						<option value="soixanteDix">N°13 - 70 à 79</option>
+						<option value="01234567u">N°14 - 8 chiffres 0 1 2 3 4 5 6 7</option>
+						<option value="quatreVingt">N°15 - 80 à 89</option>
+						<option value="quatreVingtDix">N°16 - 90 à 99</option>
+						<option value="vingtSoixanteNeuf">N°17 - 20 à 69</option>
+						<option value="soixanteQuatreVingtDixNeuf">N°18 - 60 à 99</option>
+						<option value="0123456789u">N°19 - 10 à 99</option>
+					</select>
+					<select name="progression CE" id="progressionCE">
+						<option value="progCE">Progression CE</option>
+						<option value="10_99">10 à 99</option>
+						<option value="centaines">centaines</option>
+						<option value="100">100 à 199</option>
+						
+						<option value="200">200 à 299</option>						
+						<option value="012">3 chiffres 0 1 2</option>
+						<option value="300">300 à 399</option>
+						<option value="0123">4 chiffres 0 1 2 3</option>
+						<option value="400">400 à 499</option>
+						<option value="sansunites">100 à 1000 sans unités</option>
+						
+						<option value="500">500 à 599</option>
+						<option value="012345">6 chiffres 0 1 2 3 4 5</option>
+						<option value="600">600 à 699</option>
+						<option value="sansdizaines">100 à 1000 sans dizaines</option>
+						<option value="700">700 à 799</option>
+						<option value="01234567">8 chiffres 0 1 2 3 4 5 6 7</option>
+						<option value="800">800 à 899</option>
+						<option value="900">900 à 999</option>
+						<option value="1000_9999">1.000 à 9.999</option>						
+					</select>
+					<select name="progression CM" id="progressionCM">
+						<option value="progCM">Progression CM</option>
+						<option value="1000_9999">1.000 à 9.999</option>
+						<option value="10000_99999">10.000 à 99.999</option>
+						<option value="100000_999999">100.000 à 999.999</option>
+						<option value="1000000_9999999">1.000.000 à 9.999.999</option>
+						<option value="10000000_99999999">10.000.000 à 99.999.999</option>
+						<option value="100000000_999999999">100.000.000 à 999.999.999</option>
+						<option value="1000000000_9999999999">1.000.000.000 à 9.999.999.999</option>
+						<option value="10000000000_99999999999">10.000.000.000 à 99.999.999.999</option>
+						<option value="100000000000_999999999999">100.000.000.000 à 999.999.999.999</option>
+					</select>
+				</form>			
+				<button onclick="reset(), mise_a_zero()">Mise à zéro</button>
+			</div>
 			
 		</div>
 	</header>
 	<main>
 		
 		<div id="ligne1">
+			
 			<div id="groupeUnites">
 				<div id="unites">
-					<button onclick="melangerUnChiffre(unites, affichageMelange)">1</button>
+					<button onclick="melangerUnChiffre(unites, affichageMelange)">mix 1</button>
 					<div id="form-group-unites"></div>
 					<button onclick="selectAll('units', baseUnites, unites)" class="boutonTous">Tous</button>
 					<button onclick="selectNone('units', baseUnites, unites)" class="boutonAucun">Aucun</button>
 				</div>
 				<div id="dizaines">
-					<button onclick="melangerDeuxChiffres(unites, dizaines, affichageMelange)">10</button>
+					<button onclick="melangerDeuxChiffres(unites, dizaines, affichageMelange)">mix 10</button>
 					<div id="form-group-dizaines"></div>
 					<button onclick="selectAll('tens', baseDizaines, dizaines)" class="boutonTous">Tous</button>
 					<button onclick="selectNone('tens', baseDizaines, dizaines)" class="boutonAucun">Aucun</button>
 				</div>
 				<div id="centaines">
-					<button onclick="melangerTroisChiffres(unites, dizaines, centaines, affichageMelange)">100</button>
+					<button onclick="melangerTroisChiffres(unites, dizaines, centaines, affichageMelange)">mix 100</button>
 					<div id="form-group-centaines"></div>
 					<button onclick="selectAll('hundreds', baseCentaines, centaines)" class="boutonTous">Tous</button>
 					<button onclick="selectNone('hundreds', baseCentaines, centaines)" class="boutonAucun">Aucun</button>
 				</div>
 			</div>
+			
 			<div id="groupeMille">
 				<div id="unitesMille">
-					<button onclick="melangerQuatreChiffres(unites, dizaines, centaines, unitesMille, affichageMelange)">1.000</button>
+					<button onclick="melangerQuatreChiffres(unites, dizaines, centaines, unitesMille, affichageMelange)">mix 1.000</button>
 					<div id="form-group-unites-mille"></div>
 					<button onclick="selectAll('thousand', baseUnitesMille, unitesMille)" class="boutonTous">Tous</button>
 					<button onclick="selectNone('thousand', baseUnitesMille, unitesMille)" class="boutonAucun">Aucun</button>
 				</div>
-				<div id="unitesMille">
-					<button onclick="melangerCinqChiffres(unites, dizaines, centaines, unitesMille, dizainesMille, affichageMelange)">10.000</button>
+				<div id="dizainesMille">
+					<button onclick="melangerCinqChiffres(unites, dizaines, centaines, unitesMille, dizainesMille, affichageMelange)">mix 10.000</button>
 					<div id="form-group-dizaines-mille"></div>
 					<button onclick="selectAll('ten-thousand', baseDizainesMille, dizainesMille)" class="boutonTous">Tous</button>
 					<button onclick="selectNone('ten-thousand', baseDizainesMille, dizainesMille)" class="boutonAucun">Aucun</button>
 				</div>
-				<div id="unitesMille">
-					<button onclick="melangerSixChiffres(unites, dizaines, centaines, unitesMille, dizainesMille, centainesMille, affichageMelange)">100.000</button>
+				<div id="centainesMille">
+					<button onclick="melangerSixChiffres(unites, dizaines, centaines, unitesMille, dizainesMille, centainesMille, affichageMelange)">mix 100.000</button>
 					<div id="form-group-centaines-mille"></div>
 					<button onclick="selectAll('hundred-thousand', baseCentainesMille, centainesMille)" class="boutonTous">Tous</button>
 					<button onclick="selectNone('hundred-thousand', baseCentainesMille, centainesMille)" class="boutonAucun">Aucun</button>
 				</div>	
 			</div>
+			
+		</div>
+			
+		<div id="ligne2">
+				
+			<div id="groupeMillion">
+				<div id="unitesMillion">
+					<button onclick="melangerSeptChiffres(unites, dizaines, centaines, unitesMille, dizainesMille, centainesMille, unitesMillion, affichageMelange)">mix 1.000.000</button>
+					<div id="form-group-unites-million"></div>
+					<button onclick="selectAll('million', baseUnitesMillion, unitesMillion)" class="boutonTous">Tous</button>
+					<button onclick="selectNone('million', baseUnitesMillion, unitesMillion)" class="boutonAucun">Aucun</button>
+				</div>
+				<div id="dizainesMillion">
+					<button onclick="melangerHuitChiffres(unites, dizaines, centaines, unitesMille, dizainesMille, centainesMille, unitesMillion, dizainesMillion, affichageMelange)">mix 10.000.000</button>
+					<div id="form-group-dizaines-million"></div>
+					<button onclick="selectAll('ten-million', baseDizainesMillion, dizainesMillion)" class="boutonTous">Tous</button>
+					<button onclick="selectNone('ten-million', baseDizainesMillion, dizainesMillion)" class="boutonAucun">Aucun</button>
+				</div>
+				<div id="centainesMillion">
+					<button onclick="melangerNeufChiffres(unites, dizaines, centaines, unitesMille, dizainesMille, centainesMille, unitesMillion, dizainesMillion, centainesMillion, affichageMelange)">mix 100.000.000</button>
+					<div id="form-group-centaines-million"></div>
+					<button onclick="selectAll('hundred-million', baseCentainesMillion, centainesMillion)" class="boutonTous">Tous</button>
+					<button onclick="selectNone('hundred-million', baseCentainesMillion, centainesMillion)" class="boutonAucun">Aucun</button>
+				</div>	
+			</div>
+			
+			<div id="groupeMilliard">
+				<div id="unitesMilliard">
+					<button onclick="melangerDixChiffres(unites, dizaines, centaines, unitesMille, dizainesMille, centainesMille, unitesMillion, dizainesMillion, centainesMillion, unitesMilliard, affichageMelange)">mix 1.000.000.000</button>
+					<div id="form-group-unites-milliard"></div>
+					<button onclick="selectAll('billion', baseUnitesMilliard, unitesMilliard)" class="boutonTous">Tous</button>
+					<button onclick="selectNone('billion', baseUnitesMilliard, unitesMilliard)" class="boutonAucun">Aucun</button>
+				</div>
+				<div id="dizainesMilliard">
+					<button onclick="melangerOnzeChiffres(unites, dizaines, centaines, unitesMille, dizainesMille, centainesMille, unitesMillion, dizainesMillion, centainesMillion, unitesMilliard, dizainesMilliard, affichageMelange)">mix 10.000.000.000</button>
+					<div id="form-group-dizaines-milliard"></div>
+					<button onclick="selectAll('ten-billion', baseDizainesMilliard, dizainesMilliard)" class="boutonTous">Tous</button>
+					<button onclick="selectNone('ten-billion', baseDizainesMilliard, dizainesMilliard)" class="boutonAucun">Aucun</button>
+				</div>
+				<div id="centainesMilliard">
+					<button onclick="melangerDouzeChiffres(unites, dizaines, centaines, unitesMille, dizainesMille, centainesMille, unitesMillion, dizainesMillion, centainesMillion, unitesMilliard, dizainesMilliard, centainesMilliard, affichageMelange)">mix 100.000.000.000</button>
+					<div id="form-group-centaines-milliard"></div>
+					<button onclick="selectAll('hundred-billion', baseCentainesMilliard, centainesMilliard)" class="boutonTous">Tous</button>
+					<button onclick="selectNone('hundred-billion', baseCentainesMilliard, centainesMilliard)" class="boutonAucun">Aucun</button>
+				</div>	
+			</div>
+			
 		</div>			
 				
 		<p id="affichage-melange"></p>			

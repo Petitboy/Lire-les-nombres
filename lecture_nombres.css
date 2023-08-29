@@ -8,29 +8,24 @@ text-align: justify;
 margin: 20px;
 }
 
-body {
-background-color: #ADD8E6;
-}
-
-#unites, #dizaines, #centaines, #unitesMille, #dizainesMille, #centainesMille {
+#unites, #dizaines, #centaines, #unitesMille, #dizainesMille, #centainesMille, #unitesMillion, #dizainesMillion, #centainesMillion, #unitesMilliard, #dizainesMilliard, #centainesMilliard {
 display: flex;
 flex-direction: row;
 }
 
-#groupeMille, #groupeUnites {
-display: flex;
-flex-direction: column;
+#groupeMille, #groupeUnites, #groupeMillion, #groupeMilliard {
+display: grid;
+margin: 20px;
+justify-content: center;
 }
 
-#ligne1 {
-display: flex;
-flex-direction: column;
+#ligne1, #ligne2 {
 justify-content: space-around;
 margin: 20px;
 }
 
 button {
-width: 120px;
+width: 175px;
 text-align: center;
 }
 
